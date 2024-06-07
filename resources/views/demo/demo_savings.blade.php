@@ -29,7 +29,7 @@
                     </tr>
                 </thead>
                 <tbody id="savings-table" class="text-gray-600 text-sm font-light">
-                    <!-- Savings will be inserted here by JavaScript -->
+                    <!-- Oszczednosci -->
                 </tbody>
             </table>
         </div>
@@ -44,17 +44,17 @@
             <input type="hidden" id="saving-id">
             <div class="mb-4">
                 <label for="saving-goal" class="block text-gray-700">Cel</label>
-                <input type="text" id="saving-goal" class="w-full border-gray-300 rounded" required>
+                <input type="text" id="saving-goal" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                 <p id="saving-goal-error" class="text-red-500 text-xs hidden">Proszę podać cel oszczędności.</p>
             </div>
             <div class="mb-4">
                 <label for="saving-amount" class="block text-gray-700">Kwota</label>
-                <input type="number" id="saving-amount" class="w-full border-gray-300 rounded" step="0.01" min="0.01" required>
+                <input type="number" id="saving-amount" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" step="0.01" min="0.01" required>
                 <p id="saving-amount-error" class="text-red-500 text-xs hidden">Kwota musi być większa niż 0.01.</p>
             </div>
             <div class="mb-4">
                 <label for="saving-date" class="block text-gray-700">Data</label>
-                <input type="date" id="saving-date" class="w-full border-gray-300 rounded" required>
+                <input type="date" id="saving-date" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                 <p id="saving-date-error" class="text-red-500 text-xs hidden">Proszę podać datę.</p>
             </div>
             <div class="flex justify-end">

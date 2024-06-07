@@ -23,14 +23,13 @@
                     </tr>
                 </thead>
                 <tbody id="categories-table" class="text-gray-600 text-sm font-light">
-                    <!-- Categories will be inserted here by JavaScript -->
+                    <!-- Kategorie -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<!-- Modal for adding/editing category -->
 <div id="category-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded shadow-lg w-full max-w-lg">
         <h2 class="text-xl font-bold mb-4" id="category-modal-title">Dodaj Kategorię</h2>
@@ -38,7 +37,7 @@
             <input type="hidden" id="category-id">
             <div class="mb-4">
                 <label for="category-name" class="block text-gray-700">Nazwa</label>
-                <input type="text" id="category-name" class="w-full border-gray-300 rounded" required>
+                <input type="text" id="category-name" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                 <p id="category-name-error" class="text-red-500 text-xs hidden">Proszę podać nazwę kategorii.</p>
             </div>
             <div class="flex justify-end">

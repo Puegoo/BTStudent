@@ -21,14 +21,13 @@
                     </tr>
                 </thead>
                 <tbody id="transactions-table" class="text-gray-600 text-sm font-light">
-                    <!-- Transactions will be inserted here by JavaScript -->
+                    <!-- Tranzakcje -->
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 
-<!-- Modal for adding/editing transaction -->
 <div id="transaction-modal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden">
     <div class="bg-white p-8 rounded shadow-lg w-full max-w-lg">
         <h2 class="text-xl font-bold mb-4" id="modal-title">Dodaj Transakcję</h2>
@@ -36,7 +35,7 @@
             <input type="hidden" id="transaction-id">
             <div class="mb-4">
                 <label for="type" class="block text-gray-700">Typ</label>
-                <select id="type" class="w-full border-gray-300 rounded" required>
+                <select id="type" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                     <option value="">Wybierz typ</option>
                     <option value="Dochody">Dochody</option>
                     <option value="Wydatki">Wydatki</option>
@@ -45,17 +44,17 @@
             </div>
             <div class="mb-4">
                 <label for="category" class="block text-gray-700">Kategoria</label>
-                <input type="text" id="category" class="w-full border-gray-300 rounded" required>
+                <input type="text" id="category" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                 <p id="category-error" class="text-red-500 text-xs hidden">Proszę podać kategorię.</p>
             </div>
             <div class="mb-4">
                 <label for="amount" class="block text-gray-700">Kwota</label>
-                <input type="number" id="amount" class="w-full border-gray-300 rounded" step="0.01" min="0.01" required>
+                <input type="number" id="amount" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" step="0.01" min="0.01" required>
                 <p id="amount-error" class="text-red-500 text-xs hidden">Kwota musi być większa niż 0.01.</p>
             </div>
             <div class="mb-4">
                 <label for="date" class="block text-gray-700">Data</label>
-                <input type="date" id="date" class="w-full border-gray-300 rounded" required>
+                <input type="date" id="date" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required>
                 <p id="date-error" class="text-red-500 text-xs hidden">Proszę podać datę.</p>
             </div>
             <div class="mb-4">

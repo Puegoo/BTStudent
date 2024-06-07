@@ -54,15 +54,19 @@ class HomeController extends Controller
         if ($categories->isEmpty()) {
             Category::create(['name' => 'Default Category', 'user_id' => Auth::id()]);
         }
-    
-        $request->validate([
-            'type' => 'required|in:Dochody,Wydatki',
-            'category_id' => 'required|exists:categories,id',
-            'amount' => 'required|numeric|min:0.01|max:99999999.99',
-            'date' => 'required|date',
-            'description' => 'nullable|string',
-        ]);
-    
+
+        $amount = $request->input('amount');
+        if ($amount <= 99999999.99){
+            $request->validate([
+                'type' => 'required|in:Dochody,Wydatki',
+                'category_id' => 'required|exists:categories,id',
+                'amount' => 'required|numeric|min:0.01|max:99999999.99|regex:/^\d+(\.\d{1,2})?$/',
+                'date' => 'required|date',
+                'description' => 'nullable|string',
+            ]);
+        }else {
+            return redirect()->route('transactions.index')->with('error', 'Kwota nie może przekraczać 99999999.99.');
+        }
         $data = $request->all();
         $data['user_id'] = Auth::id();
     
@@ -80,18 +84,33 @@ class HomeController extends Controller
 
     public function updateTransaction(Request $request, $id)
     {
-        $request->validate([
-            'type' => 'required|in:Dochody,Wydatki',
-            'category_id' => 'required',
-            'amount' => 'required|numeric|min:0.01|max:999999999.99',
-            'date' => 'required|date',
-            'description' => 'nullable|string',
-        ]);
-
-        $transaction = Transaction::where('user_id', Auth::id())->findOrFail($id);
+        $categories = Category::all();
+        if ($categories->isEmpty()) {
+            Category::create(['name' => 'Jedzenie', 'user_id' => Auth::id(), 'created_at' => now(), 'updated_at' => now()]);
+            Category::create(['name' => 'Transport', 'user_id' => Auth::id(), 'created_at' => now(), 'updated_at' => now()]);
+            Category::create(['name' => 'Rozrywka', 'user_id' => Auth::id(), 'created_at' => now(), 'updated_at' => now()]);
+        }
+    
+        $amount = $request->input('amount');
+        if ($amount <= 99999999.99){
+            $request->validate([
+                'type' => 'required|in:Dochody,Wydatki',
+                'category_id' => 'required|exists:categories,id',
+                'amount' => 'required|numeric|min:0.01|max:99999999.99|regex:/^\d+(\.\d{1,2})?$/',
+                'date' => 'required|date',
+                'description' => 'nullable|string',
+            ]);
+        }else {
+            return redirect()->route('transactions.index')->with('error', 'Kwota nie może przekraczać 99999999.99.');
+        }
+    
+        $transaction = Transaction::findOrFail($id);
+    
         $transaction->update($request->all());
+    
         return redirect()->route('transactions.index')->with('success', 'Transakcja została zaktualizowana.');
     }
+    
 
     public function destroyTransaction($id)
     {
@@ -167,12 +186,17 @@ class HomeController extends Controller
 
     public function storeSaving(Request $request)
     {
-        $request->validate([
-            'goal' => 'required|string|max:255',
-            'amount' => 'required|numeric|min:0.01|max:999999999.99',
-            'date' => 'required|date',
-        ]);
 
+        $amount = $request->input('amount');
+        if ($amount <= 99999999.99){
+            $request->validate([
+                'goal' => 'required|string|max:255',
+                'amount' => 'required|numeric|min:0.01|max:999999999.99|regex:/^\d+(\.\d{1,2})?$/',
+                'date' => 'required|date',
+            ]);
+        }else {
+            return redirect()->route('savings.index')->with('error', 'Kwota nie może przekraczać 99999999.99.');
+        }
         Saving::create([
             'goal' => $request->goal,
             'amount' => $request->amount,
@@ -193,7 +217,7 @@ class HomeController extends Controller
     {
         $request->validate([
             'goal' => 'required|string|max:255',
-            'amount' => 'required|numeric|min:0.01|max:999999999.99',
+            'amount' => 'required|numeric|min:0.01|max:999999999.99|regex:/^\d+(\.\d{1,2})?$/',
             'date' => 'required|date',
         ]);
 

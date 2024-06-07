@@ -30,7 +30,7 @@
             </div>
             <div class="mb-4">
                 <label for="amount" class="block text-gray-700 font-bold mb-2">Kwota</label>
-                <input type="number" name="amount" id="amount" step="0.01" min="0.01" max="99999999.99" value="{{ old('amount') }}" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <input type="number" name="amount" id="amount" step="0.01" min="0.01" max="99999999.99" required pattern="\d+(\.\d{1,2})?" value="{{ old('amount') }}" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                 @error('amount')
                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                 @enderror
@@ -55,16 +55,17 @@
         </form>
     </div>
 </div>
-
-
 <script>
     document.getElementById('amount').addEventListener('input', function () {
-        if (this.value > 99999999.99) {
-            this.setCustomValidity('Kwota nie może przekraczać 9999999999.99 PLN.');
-        } else {
-            this.setCustomValidity('');
-        }
-    });
-</script>
+    const value = this.value;
+    const regex = /^\d+(\.\d{1,2})?$/;
+    const parsedValue = parseFloat(value);
+    if (!regex.test(value) || parsedValue > 99999999.99) {
+        this.setCustomValidity('Wprowadź poprawną kwotę (maks. 99999999.99, maks. dwie liczby po przecinku).');
+    } else {
+        this.setCustomValidity('');
+    }
+});
 
+</script>
 @endsection

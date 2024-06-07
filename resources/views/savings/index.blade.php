@@ -7,6 +7,16 @@
         <a href="{{ route('savings.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600">Dodaj Oszczędność</a>
     </div>
     <div class="bg-white shadow-md rounded my-6 overflow-x-auto">
+        @if (session('error'))
+            <div class="bg-red-500 text-white p-4 rounded mb-4">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="bg-green-500 text-white p-4 rounded mb-4">
+                {{ session('success') }}
+            </div>
+        @endif
         <table class="min-w-full leading-normal">
             <thead>
                 <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">

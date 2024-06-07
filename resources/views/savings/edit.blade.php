@@ -8,7 +8,7 @@
         @method('PUT')
         <div class="mb-4">
             <label for="amount" class="block text-sm font-medium text-gray-700">Kwota</label>
-            <input type="number" name="amount" id="amount" class="mt-1 p-2 block w-full border rounded-md" step="0.01" min="0.01" value="{{ old('amount', $saving->amount) }}" required>
+            <input type="number" name="amount" id="amount" class="mt-1 p-2 block w-full border rounded-md" step="0.01" min="0.01" max="99999999.99" pattern="\d+(\.\d{1,2})?" value="{{ old('amount', $saving->amount) }}" required>
             @error('amount')
                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
             @enderror

@@ -83,3 +83,15 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     Route::get('admin/chart-data', [AdminController::class, 'getAdminChartData'])->name('admin.chartData');
 });
+
+Route::get('/test-404', function() {
+    abort(404);
+});
+
+Route::get('/test-500', function() {
+    abort(500);
+});
+
+Route::get('/test-403', function() {
+    abort(403);
+});
