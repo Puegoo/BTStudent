@@ -1,4 +1,4 @@
-# Budżet Studencki
+# Budżet Studencki (szczegóły projektu znajdują się w pliku `Dokumentacja.docx` lub `Dokumentacja.pdf`)
 
 ## Wstęp
 
